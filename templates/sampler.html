@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+    {% block title %}Sampler{% endblock %}
+    {% block head %}<script src="{{ url_for('static', filename='sampler.js' )}}"></script>{% endblock %}
+
+    {% block content %}
+    <h3>Thanks for sampling, {{ name }}!</h3>
+    <div class="color-container"></div>
+    <form method='POST'>
+        {% for color in colors %}
+        <input type="radio" name="color_guess" value="{{ color }}" id="{{ color }}" /><label for="{{ color }}"> {{ color }}</label>
+        {% endfor %}
+        <input type="hidden" value="{{ name }}" name="entry_name" />
+    </form>
+
+
+    {% endblock %}

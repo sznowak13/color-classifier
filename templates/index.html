@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+    {% block title %}Index{% endblock %}
+
+    {% block content %}
+        <h3>Main page</h3>
+        <p>Hi, welcome to color sampler, a application that collects data through user input!</p>
+        <p>If you want participate to this database, please enter your name and start sampling!</p>
+
+        <form method="POST">
+            <input name="entry_name" type="text" placeholder="Enter your name..." />
+            <button type="submit">Start sampling!</button>
+        </form>
+    {% endblock %}
