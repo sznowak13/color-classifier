@@ -1,16 +1,23 @@
 {% extends 'layout.html' %}
 
     {% block title %}Sampler{% endblock %}
-    {% block head %}<script src="{{ url_for('static', filename='sampler.js' )}}"></script>{% endblock %}
+    {% block head %}<script src="{{ url_for('static', filename='js/sampler.js' )}}" defer></script>{% endblock %}
 
     {% block content %}
-    <h3>Thanks for sampling, {{ name }}!</h3>
+    <h3>Thanks for sampling, {{ session['name'] }}!</h3>
+    <p>what is the color of this square?</p>
+
+    <div id="color-square"></div>
     <div class="color-container"></div>
     <form method='POST'>
         {% for color in colors %}
-        <input type="radio" name="color_guess" value="{{ color }}" id="{{ color }}" /><label for="{{ color }}"> {{ color }}</label>
+        <input type="submit" name="color_guess" value="{{ color }}" id="{{ color }}" />
         {% endfor %}
-        <input type="hidden" value="{{ name }}" name="entry_name" />
+        <input type="hidden" value="{{ session['name'] }}" name="entry_name" />
+        <input id="red" type="hidden" value="" name="red" />
+        <input id="green" type="hidden" value="" name="green" />
+        <input id="blue" type="hidden" value="" name="blue" />
+
     </form>
 
 
