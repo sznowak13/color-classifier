@@ -31,7 +31,8 @@ def connection_handler(func):
     def wrapper(*args, **kwargs):
         connection = get_connection()
         cursor = connection.cursor(cursor_factory=psycopg2.extras.RealDictCursor)
+        ret_value = func(cursor, *args, **kwargs)
         cursor.close()
         connection.close()
-        return func(cursor, *args, **kwargs)
+        return ret_value
     return wrapper
