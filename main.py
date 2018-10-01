@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from os import urandom
 from uuid import uuid1
-from persistence import db_manager
+from persistence import db_manager as dh
 
 app = Flask(__name__)
 
@@ -27,7 +27,7 @@ def sampler():
     elif request.method == 'POST':
         data_entry = request.form.to_dict()
         data_entry['id'] = session['entry_uuid']
-        db_manager.add_entry(entry=data_entry)
+        dh.add_entry(entry=data_entry)
         return redirect( url_for('sampler') )
 
 
