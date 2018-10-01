@@ -5,6 +5,7 @@ from persistence import db_manager
 
 app = Flask(__name__)
 
+COLOR_LABELS = ['red-ish', 'yellow-ish', 'green-ish', 'purple-ish', 'brown-ish', 'blue-ish', 'pink-ish', 'orange-ish', 'black-ish', 'white-ish']
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
@@ -22,12 +23,10 @@ def index():
 @app.route('/sampler', methods=['POST', 'GET'])
 def sampler():
     if request.method == 'GET':
-        colors = ['red-ish', 'yellow-ish', 'green-ish', 'purple-ish', 'brown-ish', 'blue-ish', 'pink-ish', 'orange-ish']
-        return render_template('sampler.html', colors=colors)
+        return render_template('sampler.html', colors=COLOR_LABELS)
     elif request.method == 'POST':
         data_entry = request.form.to_dict()
         data_entry['id'] = session['entry_uuid']
-        print(data_entry)
         db_manager.add_entry(entry=data_entry)
         return redirect( url_for('sampler') )
 
