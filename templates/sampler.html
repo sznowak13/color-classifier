@@ -12,16 +12,9 @@
 
     <div id="color-square"></div>
     <div class="color-container"></div>
-    <form method='POST'>
-        {% for color in colors %}
-        <input type="submit" name="color_guess" value="{{ color }}" id="{{ color }}" />
-        {% endfor %}
-        <input type="hidden" value="{{ session['name'] }}" name="entry_name" />
-        <input id="red" type="hidden" value="" name="red" />
-        <input id="green" type="hidden" value="" name="green" />
-        <input id="blue" type="hidden" value="" name="blue" />
-
-    </form>
+    {% for color in colors %}
+    <button type="button" name="color_guess" value="{{ color }}">{{ color }}</button>
+    {% endfor %}
 
 
     {% endblock %}
