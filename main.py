@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from os import urandom
 from uuid import uuid1
-from persistence import db_manager as dh
+from logic import data_logic as dl
 
 app = Flask(__name__)
 
@@ -27,12 +27,24 @@ def sampler():
     elif request.method == 'POST':
         data_entry = request.form.to_dict()
         data_entry['id'] = session['entry_uuid']
-        dh.add_entry(entry=data_entry)
         return redirect( url_for('sampler') )
 
 
+@app.route('/add-entry', methods=['POST'])
+def add_entry():
+    data_entry = request.get_json()
+    data_entry['id'] = session['entry_uuid']
+    data_entry['entry_name'] = session['name']
+    result = dl.add_color_entry(data_entry)
+    return jsonify({
+        'status': result.status,
+        'message': result.message,
+        'body': result.body
+    })
+
 if __name__ == '__main__':
     app.secret_key = urandom(25)
+    app.env = 'Development'
     app.run(
         debug=True,
         port=5060
