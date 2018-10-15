@@ -1,7 +1,10 @@
 {% extends 'layout.html' %}
 
     {% block title %}Sampler{% endblock %}
-    {% block head %}<script src="{{ url_for('static', filename='js/sampler.js' )}}" defer></script>{% endblock %}
+    {% block head %}
+        <script src="{{ url_for('static', filename='js/sampler.js' )}}" defer></script>
+        <script src="{{ url_for('static', filename='js/data_handler.js' )}}" defer></script>
+    {% endblock %}
 
     {% block content %}
     <h3>Thanks for sampling, {{ session['name'] }}!</h3>
