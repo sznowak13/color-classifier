@@ -6,18 +6,20 @@
     <title>{% block title %}{% endblock %} - Color Sampler</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/style.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
     <div class="container">
+    <div id="flashes">
     {% with messages = get_flashed_messages() %}
-        {{ messages }}
         {% if messages %}
             {% for message in messages %}
-                <h5>{{ message }}</h5>
+                <div class="flash">{{ message }}</div>
             {% endfor %}
         {% endif %}
     {% endwith %}
+    </div>
     {% block content %}{% endblock %}
     </div>
 </body>
