@@ -20,10 +20,12 @@ class Result:
     def __repr__(self):
         return f'{self.status}: {self.message}'
 
+
 class ColorDataset:
     def __init__(self, rawdata):
         self.data = [[row['red'], row['green'], row['blue']] for row in rawdata]
         self.target = [COLOR_LABELS[row['color_guess']] for row in rawdata]
+        self.length = len(rawdata)
 
     def __repr__(self):
         return (f"Color dataset with {len(self.data)} entries.")

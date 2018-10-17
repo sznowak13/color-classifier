@@ -42,7 +42,8 @@ def add_entry():
 
 @app.route('/classifier')
 def classifier():
-    return render_template('classifier.html')
+    score, num_entries = ml_test.prepare_model()
+    return render_template('classifier.html', score=score, entry_number=num_entries)
 
 
 @app.route('/predict-color', methods=['POST'])
