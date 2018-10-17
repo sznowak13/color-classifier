@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<script src="{{ url_for('static', filename='js/classifier.js') }}" defer></script>
+{% endblock %}
+
+{% block title %}Classifier{% endblock %}
+
+{% block content %}
+    <h3>Color Classifier</h3>
+    <p>Choose color to predict.</p>
+    <form>
+        <label for="red">Red:</label>
+        <input id="red" name="red" type="range" min="0" max="255" />
+        <label for="green">Green:</label>
+        <input id="green" name="green" type="range" min="0" max="255" />
+        <label for="blue">Blue:</label>
+        <input id="blue" name="blue" type="range" min="0" max="255" />
+
+        <button type="button" id="generate">Generate color!</button>
+    </form>
+    <div id="color-square"></div>
+    <button type="button" id="predict">Predict!</button>
+    <div id="prediction"></div>
+{% endblock %}
