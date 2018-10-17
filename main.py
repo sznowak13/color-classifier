@@ -22,14 +22,9 @@ def index():
         return redirect( url_for('sampler') )
 
 
-@app.route('/sampler', methods=['POST', 'GET'])
+@app.route('/sampler')
 def sampler():
-    if request.method == 'GET':
-        return render_template('sampler.html', colors=COLOR_LABELS)
-    elif request.method == 'POST':
-        data_entry = request.form.to_dict()
-        data_entry['id'] = session['entry_uuid']
-        return redirect( url_for('sampler') )
+    return render_template('sampler.html', colors=COLOR_LABELS)
 
 
 @app.route('/add-entry', methods=['POST'])
