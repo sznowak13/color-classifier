@@ -11,6 +11,7 @@ COLOR_LABELS = {
     'white-ish': 9
 }
 
+
 class Result:
     def __init__(self, status, message, body):
         self.status = status

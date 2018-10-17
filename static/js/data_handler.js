@@ -13,6 +13,11 @@ const dataHandler = {
             })
       })
           .then(response => response.json())
-          .then(data => console.log(data))
+          .then(data => {
+              console.log(data);
+              sampler.randomColor();
+              sampler.showColor();
+            }
+          )
   }
 };
