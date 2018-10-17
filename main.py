@@ -12,8 +12,9 @@ COLOR_LABELS = ['red-ish', 'yellow-ish', 'green-ish', 'purple-ish', 'brown-ish',
 def index():
     if request.method == 'GET':
         if 'entry_uuid' in session:
-            flash(f"Thanks for sampling, {session['name']}")
+            name = session['name']
             session.clear()
+            flash(f"Thanks for sampling, {name}")
         return render_template('index.html')
     elif request.method == 'POST':
         session['name'] = request.form['entry_name']
