@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from os import urandom
 from uuid import uuid1
 from logic import data_logic as dl
+from ml import ml_test
 
 app = Flask(__name__)
 
@@ -41,6 +42,24 @@ def add_entry():
         'message': result.message,
         'body': result.body
     })
+
+
+@app.route('/classifier')
+def classifier():
+    return render_template('classifier.html')
+
+
+@app.route('/predict-color', methods=['POST'])
+def predict_color():
+    request_data = request.get_json()
+    rgb_values = [[request_data['red'], request_data['green'], request_data['blue']]]
+    res = ml_test.predict_color(rgb_values)
+    return jsonify({
+        'status': res.status,
+        'message': res.message,
+        'body': res.body
+    })
+
 
 if __name__ == '__main__':
     app.secret_key = urandom(25)
