@@ -29,4 +29,4 @@ class ColorDataset:
         self.length = len(rawdata)
 
     def __repr__(self):
-        return (f"Color dataset with {len(self.data)} entries.")
+        return f"Color dataset with {len(self.data)} entries."

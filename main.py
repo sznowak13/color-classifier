@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from os import urandom
 from uuid import uuid1
+
 from logic import data_logic as dl
 from ml import ml_test
+from util import COLOR_LABELS
 
 app = Flask(__name__)
 
-COLOR_LABELS = ['red-ish', 'yellow-ish', 'green-ish', 'purple-ish', 'brown-ish', 'blue-ish', 'pink-ish', 'orange-ish', 'black-ish', 'white-ish']
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
