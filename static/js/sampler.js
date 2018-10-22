@@ -1,4 +1,5 @@
 var sampler = {
+    labelsCount: 0,
     colorSample: {
         red: 0,
         green: 0,
@@ -18,6 +19,7 @@ var sampler = {
         this.colorSample.blue = parseInt(Math.random() * 256);
     },
     showColor: function () {
+        $('#labelsCount').text(`Colors classified: ${this.labelsCount}`);
         $('#color-square').css('background-color', `rgb(${this.colorSample.red},${this.colorSample.green},${this.colorSample.blue})`);
     },
     sendData: function (ev) {

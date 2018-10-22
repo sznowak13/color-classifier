@@ -12,12 +12,11 @@ const dataHandler = {
                 color_label: buttonLabel
             })
       })
-          .then(response => response.json())
-          .then(data => {
-              console.log(data);
+          .then(() => {
+              sampler.labelsCount++;
               sampler.randomColor();
               sampler.showColor();
-            }
-          )
+            })
+          .catch( err => console.log(err))
   }
 };
