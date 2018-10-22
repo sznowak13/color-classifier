@@ -34,11 +34,7 @@ def add_entry():
     data_entry['id'] = session['entry_uuid']
     data_entry['entry_name'] = session['name']
     result = dl.add_color_entry(data_entry)
-    return jsonify({
-        'status': result.status,
-        'message': result.message,
-        'body': result.body
-    })
+    return jsonify(result.to_dict())
 
 
 @app.route('/classifier')
@@ -52,11 +48,7 @@ def predict_color():
     request_data = request.get_json()
     rgb_values = [[request_data['red'], request_data['green'], request_data['blue']]]
     res = ml_test.predict_color(rgb_values)
-    return jsonify({
-        'status': res.status,
-        'message': res.message,
-        'body': res.body
-    })
+    return jsonify(res.to_dict())
 
 
 if __name__ == '__main__':

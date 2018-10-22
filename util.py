@@ -21,6 +21,13 @@ class Result:
     def __repr__(self):
         return f'{self.status}: {self.message}'
 
+    def to_dict(self):
+        return {
+            'message': self.message,
+            'status': self.status,
+            'body': self.body
+        }
+
 
 class ColorDataset:
     def __init__(self, rawdata):
