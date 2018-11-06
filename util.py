@@ -30,6 +30,9 @@ class Result:
 
 
 class ColorDataset:
+    """
+    Dataset class for color labels. Takes set of rgb values with labels corelated to this values.
+    """
     def __init__(self, rawdata):
         self.data = [[row['red'], row['green'], row['blue']] for row in rawdata]
         self.target = [COLOR_LABELS[row['color_guess']] for row in rawdata]
