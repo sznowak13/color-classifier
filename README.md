@@ -2,7 +2,7 @@
 
 A simple excercise in machine learning through crowdsourcing data.
 
-# Whats is all about?
+## Whats it all about?
 
 The first part of the app is a page where you must pick a label to the randomly generated color.
 Every answer is saved into database.
